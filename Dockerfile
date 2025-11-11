@@ -21,7 +21,7 @@ WORKDIR src/
 RUN mkdir build
 WORKDIR build
 # TODO: Allow parsing build args here
-RUN cmake -S ../
+RUN cmake -S ../ -B .
 
 # Binaries are in ../bin
 WORKDIR ../bin
