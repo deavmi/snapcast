@@ -9,7 +9,7 @@ RUN apt update
 RUN apt install build-essential cmake cmake-format ccache ninja-build -y
 RUN apt install alsa-utils avahi-daemon libasound2-dev libavahi-client-dev \ 
 		libboost-dev libexpat1-dev libflac-dev libjack-dev libopus-dev libpulse-dev \
-		libsoxr-dev libssl-dev libvorbis-dev libvorbisidec-dev -y \
+		libsoxr-dev libssl-dev libvorbis-dev libvorbisidec-dev -y 
 
 # Copy source across
 WORKDIR /tmp
@@ -18,3 +18,12 @@ COPY . src/
 
 # Build
 WORKDIR src/
+RUN mkdir build
+WORKDIR build
+# TODO: Allow parsing build args here
+RUN cmake --build .
+
+# Binaries are in ../bin
+WORKDIR ../bin
+# TODO: Copy somewhere
+
