@@ -1,7 +1,7 @@
 FROM debian:latest AS base
 
 # TODO: Add disable prompt-on-install
-ARG=/
+# ARG=/
 
 RUN apt update
 
