@@ -24,7 +24,10 @@ WORKDIR build
 
 ARG CMAKE_BUILD_PARALLEL_LEVEL=1 # TODO: Expose
 
-RUN cmake ..
+# Enable PipeWire support
+ARG COMP_WITH_PIPEWIRE=ON
+
+RUN cmake .. -DBUILD_WITH_PIPEWIRE=$COMP_WITH_PIPEWIRE
 RUN cmake --build .
 
 
