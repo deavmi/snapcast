@@ -1,4 +1,4 @@
-FROM debian:latest AS base
+FROM debian:latest AS build
 
 # TODO: Add disable prompt-on-install
 # ARG=/
@@ -31,4 +31,11 @@ RUN cmake --build .
 # Binaries are in ../bin
 WORKDIR ../bin
 # TODO: Copy somewhere
+RUN mkdir /bins
+RUN cp * /bins
 
+FROM debian:latest AS base
+
+COPY --from=build /bins/* /bin
+
+CMD ["/bin/snapserver"]
