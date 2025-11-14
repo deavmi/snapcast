@@ -19,7 +19,7 @@ RUN mkdir build
 WORKDIR build
 # TODO: Allow parsing build args here
 
-ARG CMAKE_BUILD_PARALLEL_LEVEL=1 # TODO: Expose
+ARG CMAKE_BUILD_PARALLEL_LEVEL=4 # TODO: Expose
 
 # Enable PipeWire support (FIXME: Enable by default)
 ARG COMP_WITH_PIPEWIRE=OFF
@@ -29,7 +29,12 @@ ARG COMP_WITH_PIPEWIRE=OFF
 	# apt install pipewire -y \
 # fi \
 
-RUN cmake .. -DBUILD_WITH_PIPEWIRE=$COMP_WITH_PIPEWIRE
+# RUN cmake .. -DBUILD_WITH_PIPEWIRE=$COMP_WITH_PIPEWIRE
+
+RUN apt install libpipewire-0.3-dev pipewire-devel -y
+RUN apt install pipewire -y
+
+RUN cmake .. -DBUILD_WITH_PIPEWIRE=ON
 RUN cmake --build .
 
 
