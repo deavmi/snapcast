@@ -21,13 +21,13 @@ WORKDIR build
 
 ARG CMAKE_BUILD_PARALLEL_LEVEL=1 # TODO: Expose
 
-# Enable PipeWire support
-ARG COMP_WITH_PIPEWIRE=ON
+# Enable PipeWire support (FIXME: Enable by default)
+ARG COMP_WITH_PIPEWIRE=OFF
 
-SHELL if [ $COMP_WITH_PIPEWIRE = "ON" ] \
-then \
-	apt install pipewire -y \
-fi \
+# SHELL if [ $COMP_WITH_PIPEWIRE = "ON" ] \
+# then \
+	# apt install pipewire -y \
+# fi \
 
 RUN cmake .. -DBUILD_WITH_PIPEWIRE=$COMP_WITH_PIPEWIRE
 RUN cmake --build .
