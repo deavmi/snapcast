@@ -52,6 +52,7 @@ FROM debian:latest AS base
 COPY --from=build /bins/* /bin
 
 # Install runtime shard objects
+RUN apt update
 RUN apt install alsa-utils avahi-daemon libasound2-dev libavahi-client-dev \ 
 		libboost-dev libexpat1-dev libflac-dev libjack-dev libopus-dev libpulse-dev \
 		libsoxr-dev libssl-dev libvorbis-dev libvorbisidec-dev -y 
