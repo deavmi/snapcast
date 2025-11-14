@@ -31,7 +31,7 @@ ARG COMP_WITH_PIPEWIRE=OFF
 
 # RUN cmake .. -DBUILD_WITH_PIPEWIRE=$COMP_WITH_PIPEWIRE
 
-RUN apt install libpipewire-0.3-dev pipewire-devel -y
+RUN apt install libpipewire-0.3-dev -y
 RUN apt install pipewire -y
 
 RUN cmake .. -DBUILD_WITH_PIPEWIRE=ON
