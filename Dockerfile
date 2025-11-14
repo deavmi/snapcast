@@ -21,6 +21,9 @@ WORKDIR src/
 RUN mkdir build
 WORKDIR build
 # TODO: Allow parsing build args here
+
+ARG CMAKE_BUILD_PARALLEL_LEVEL=1 # TODO: Expose
+
 RUN cmake ..
 RUN cmake --build .
 
