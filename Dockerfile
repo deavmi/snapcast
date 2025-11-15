@@ -58,5 +58,6 @@ RUN apt install alsa-utils avahi-daemon libasound2-dev libavahi-client-dev \
 		libsoxr-dev libssl-dev libvorbis-dev libvorbisidec-dev -y 
 
 RUN apt install libpipewire-0.3-dev -y
+RUN apt install pipewire -y
 
-CMD ["/bin/snapserver"]
+SHELL pipewire & /bin/snapserver 
